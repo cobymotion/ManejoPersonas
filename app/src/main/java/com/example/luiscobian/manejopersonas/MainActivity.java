@@ -16,6 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.luiscobian.manejopersonas.db.BaseDatosPersonal;
+import com.example.luiscobian.manejopersonas.db.Personal;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity
         trans.add(R.id.contenedor, fragment);
         trans.commit();
 
+        BaseDatosPersonal.addPersonal(new Personal("JOSE LUIS","34343423"));
 
     }
 
