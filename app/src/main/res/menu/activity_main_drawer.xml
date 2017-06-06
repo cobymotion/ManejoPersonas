@@ -15,6 +15,11 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Eliminar" />
 
+        <item
+            android:id="@+id/item_cerrar_sesion"
+            android:icon="@mipmap/ic_menu_cerrar_sesion"
+            android:title="Cerrar sesion" />
+
     </group>
 
 
