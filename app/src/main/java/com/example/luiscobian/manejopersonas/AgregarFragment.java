@@ -48,7 +48,7 @@ public class AgregarFragment extends Fragment {
             public void onClick(View v) {
                 Personal per = new Personal(nombre.getText().toString(),
                                             telefono.getText().toString());
-                BaseDatosPersonal.addPersonal(per);
+                BaseDatosPersonal.addPersonal(per,getContext());
                 Snackbar.make(vista,"Se agrego el personal",Snackbar.LENGTH_LONG)
                         .show();
             }

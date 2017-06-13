@@ -1,5 +1,6 @@
 package com.example.luiscobian.manejopersonas;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +17,25 @@ import java.util.List;
  */
 
 public class AdaptadorRecycler extends
-        RecyclerView.Adapter<AdaptadorRecycler.ViewPersonal> {
+        RecyclerView.Adapter<AdaptadorRecycler.ViewPersonal>
+    implements  View.OnClickListener
+
+{
 
     private List<Personal> lista;
 
+    private  View.OnClickListener listener;
 
-    public AdaptadorRecycler() {
-        this.lista = BaseDatosPersonal.getLista();
+
+    public AdaptadorRecycler(Context context) {
+        this.lista = BaseDatosPersonal.getLista(context);
     }
 
     @Override
     public ViewPersonal onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.personal_view,parent,false);
+        v.setOnClickListener(this);
         ViewPersonal viewPersonal = new ViewPersonal(v);
         return viewPersonal;
     }
@@ -46,6 +53,17 @@ public class AdaptadorRecycler extends
         return lista.size();
     }
 
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+           if(listener!=null)
+           {
+               listener.onClick(v);
+           }
+    }
 
 
     public static class ViewPersonal extends RecyclerView.ViewHolder{
